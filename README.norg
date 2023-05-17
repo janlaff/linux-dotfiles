@@ -1,0 +1,13 @@
+@document.meta
+title: linux-dotfiles readme
+@end
+
+* linux-dotfiles
+
+  Collection of personal dotfiles on linux.
+  Currently featured:
+  - (x) neovim
+  - ( ) tmux
+  - ( ) alacritty
+  - ( ) fish
+
