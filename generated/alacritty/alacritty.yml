@@ -1,0 +1,11 @@
+shell:
+  program: bash
+  args:
+    - -c "fish"
+env:
+  TERM: xterm-256color
+font:
+  size: 13.0
+  normal:
+    family: JetBrainsMono NFM
+    style: Medium
