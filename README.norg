@@ -17,3 +17,14 @@ version: 1.1.1
   - (x) [fish]{:fish:}
   - (x) [tmux]{:tmux:}
   - (x) [alacritty]{:alacritty:}
+
+** TODO's
+
+   Some things are still missing:
+
+   _Missing Neovim stuff_
+   - ( ) Neotree
+   - ( ) Autocompletion
+   - ( ) Lspkind icons
+   - ( ) rust-tools, codelldb setup [Tutorial Video]{https://www.youtube.com/watch?v=gihHLsClHF0&t=305s}
+   - ( ) Figure out the same for clang
