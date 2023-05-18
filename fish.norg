@@ -1,0 +1,18 @@
+@document.meta
+title: Fish config
+tangle: ~/.config/fish/config.fish
+@end
+
+* Starship Prompt
+
+** Install the starship prompt:
+
+   @code sh
+   curl -sS https://starship.rs/install.sh | sh
+   @end
+
+** Use it in the config:
+
+   @code fish
+   starship init fish | source
+   @end

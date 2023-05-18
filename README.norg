@@ -7,7 +7,7 @@ title: linux-dotfiles readme
   Collection of personal dotfiles on linux.
   Currently featured:
   - (x) neovim
+  - (x) fish
   - ( ) tmux
   - ( ) alacritty
-  - ( ) fish
 
