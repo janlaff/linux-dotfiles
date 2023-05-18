@@ -84,8 +84,14 @@ require("lazy").setup({
       },
     },
     init = function() 
-      vim.cmd [[ autocmd FileType norg autocmd BufEnter <buffer> :Neorg inject-metadata ]]
-      vim.cmd [[ autocmd FileType norg autocmd BufWritePre <buffer> :Neorg update-metadata ]]
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = { "*.norg" },
+        command = ":Neorg inject-metadata",
+      })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = { "*.norg" },
+        command = ":Neorg update-metadata",
+      })
     end,
     dependencies = { 
       "nvim-lua/plenary.nvim"
