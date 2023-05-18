@@ -219,6 +219,18 @@ tangle: ./generated/nvim/init.lua
     },
     @end
 
+*** Transparent.nvim
+
+    Enable transparent ui elements.
+
+    @code lua
+    {
+      "xiyaowong/transparent.nvim",
+      config = function()
+        vim.g.tokyonight_transparent = vim.g.transparent_enabled
+      end
+    },
+    @end
 
 *** Lualine
 
@@ -294,6 +306,7 @@ tangle: ./generated/nvim/init.lua
       },
     },
     @end
+
 
 *** Which Key
 

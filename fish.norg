@@ -51,7 +51,6 @@ tangle: ./generated/fish/config.fish
   set -l cyan 7dcfff
   set -l pink bb9af7
 
-
   # Syntax Highlighting Colors
   set -g fish_color_normal $foreground
   set -g fish_color_command $cyan
@@ -71,7 +70,6 @@ tangle: ./generated/fish/config.fish
   set -g fish_color_autosuggestion $comment
 
   # Completion Pager Colors
-
   set -g fish_pager_color_progress $comment
   set -g fish_pager_color_prefix $cyan
   set -g fish_pager_color_completion $foreground

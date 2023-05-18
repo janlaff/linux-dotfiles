@@ -18,7 +18,7 @@ tangle: ./generated/alacritty/alacritty.yml
   shell:
     program: bash
     args:
-      - -c "fish -c 'tmux'"
+      - -c "fish"
   @end
 
 * Enable truecolor support
@@ -84,4 +84,13 @@ tangle: ./generated/alacritty/alacritty.yml
     indexed_colors:
       - { index: 16, color: '0xff9e64' }
       - { index: 17, color: '0xdb4b4b' }
+  @end
+
+* Transparency
+
+  Make the window a little bit transparent.
+
+  @code yaml
+  window:
+    opacity: 0.7
   @end

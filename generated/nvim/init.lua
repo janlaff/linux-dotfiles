@@ -68,6 +68,12 @@ local plugins = {
   end,
 },
 {
+  "xiyaowong/transparent.nvim",
+  config = function()
+    vim.g.tokyonight_transparent = vim.g.transparent_enabled
+  end
+},
+{
   "nvim-lualine/lualine.nvim",
   -- Also use tokyonight theme here :)
   opts = { 
