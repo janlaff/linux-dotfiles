@@ -45,7 +45,7 @@ require("lazy").setup({
     "folke/tokyonight.nvim",
     config = function()
       vim.cmd.colorscheme "tokyonight-storm"
-    end
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -64,17 +64,18 @@ require("lazy").setup({
   {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
-    opts = {
-      load = {
-        ["core.defaults"] = {}, -- Loads default behaviour
-        ["core.concealer"] = {}, -- Adds pretty icons to your documents
-        ["core.tangle"] = {},
-        ["core.keybinds"] = { 
-          config = {
-            default_keybinds = false,
-          }
-        },
-        ["core.dirman"] = { -- Manages Neorg workspaces
+    config = function() 
+      require("neorg").setup({
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.tangle"] = {},
+          ["core.keybinds"] = { 
+            config = {
+              default_keybinds = false,
+            }
+          },
+          ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
               notes = "~/notes",
@@ -82,24 +83,26 @@ require("lazy").setup({
           },
         },
       },
-    },
-    init = function() 
-      vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = { "*.norg" },
-        command = ":Neorg inject-metadata",
-      })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = { "*.norg" },
-        command = ":Neorg update-metadata",
-      })
-    end,
-    dependencies = { 
-      "nvim-lua/plenary.nvim"
-    },
+    })
+
+    vim.keymap.set("n", "<leader>nn", ":Neorg keybind norg core.dirman.new.note<CR>")
+
+    vim.api.nvim_create_autocmd("BufEnter", {
+      pattern = { "*.norg" },
+      command = ":Neorg inject-metadata",
+    })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = { "*.norg" },
+      command = ":Neorg update-metadata",
+    })
+  end,
+  dependencies = { 
+    "nvim-lua/plenary.nvim"
   },
-  {
-    'nvim-lualine/lualine.nvim',
-    opts = { options = { theme = "tokyonight" } },
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
-  }
+},
+{
+  'nvim-lualine/lualine.nvim',
+  opts = { options = { theme = "tokyonight" } },
+  dependencies = { 'nvim-tree/nvim-web-devicons' }
+}
 })
