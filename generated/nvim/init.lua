@@ -11,6 +11,7 @@ vim.opt.termguicolors = true
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("n", "<Tab>", ":bn<CR>")
 vim.keymap.set("n", "<C-Tab>", ":bp<CR>")
+vim.keymap.set("n", "<ESC>", "<ESC>:nohl<CR>")
 vim.keymap.set('n', '<leader>ff', ":Telescope find_files<CR>")
 vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>")
 vim.keymap.set('n', '<leader>fb', ":Telescope buffers<CR>")
@@ -31,6 +32,23 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 local plugins = {
+{
+  "williamboman/mason.nvim",
+  config = true,
+  build = ":MasonUpdate" -- :MasonUpdate updates registry contents
+},
+{
+  "williamboman/mason-lspconfig.nvim",
+  config = true,
+},
+{
+  "neovim/nvim-lspconfig",
+  config = function()
+    local lspconfig = require("lspconfig")
+    lspconfig.lua_ls.setup({})
+    lspconfig.rust_analyzer.setup({})
+  end
+},
 {
   "kylechui/nvim-surround",
   version = "*", -- Use for stability; omit to use `main` branch for the latest features

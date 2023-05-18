@@ -63,7 +63,6 @@ tangle: ./generated/nvim/init.lua
    @end
 
 * Keymappings
-
 ** ESC
 
    Bind `jk` in insert mode to ESC.
@@ -79,6 +78,14 @@ tangle: ./generated/nvim/init.lua
    @code lua
    vim.keymap.set("n", "<Tab>", ":bn<CR>")
    vim.keymap.set("n", "<C-Tab>", ":bp<CR>")
+   @end
+
+** Disable search highlights
+
+   Map ESC so highlights will be disabled.
+
+   @code lua
+   vim.keymap.set("n", "<ESC>", "<ESC>:nohl<CR>")
    @end
 
 
@@ -130,6 +137,47 @@ tangle: ./generated/nvim/init.lua
    @code lua
    local plugins = {
    @end
+
+*** Mason
+
+    Can install lsp servers.
+
+    @code lua
+    {
+      "williamboman/mason.nvim",
+      config = true,
+      build = ":MasonUpdate" -- :MasonUpdate updates registry contents
+    },
+    @end
+
+*** Mason-LspConfig
+
+    Mason interop with lspconfig.
+
+    @code lua
+    {
+      "williamboman/mason-lspconfig.nvim",
+      config = true,
+    },
+    @end
+
+*** lspconfig
+
+    Neovim Lsp client interface.
+    Enabled lsp servers:
+    - rust-analyzer
+    - lua_ls
+
+    @code lua
+    {
+      "neovim/nvim-lspconfig",
+      config = function()
+        local lspconfig = require("lspconfig")
+        lspconfig.lua_ls.setup({})
+        lspconfig.rust_analyzer.setup({})
+      end
+    },
+    @end
 
 *** Nvim Surround
 
