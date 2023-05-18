@@ -30,6 +30,7 @@ tangle: ./generated/fish/config.fish
   @code fish
   fish_hybrid_key_bindings
   @end
+
 * Tokyonight color scheme
 
   I want tokyonight everywhere! So also use it inside fish.
