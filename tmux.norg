@@ -9,7 +9,60 @@ version: 1.1.1
 tangle: ./generated/tmux/tmux.conf
 @end
 
-* Enable truecolor support
+* TODO
+  Some stuff I should look into:
+  - ( ) [Better tmux status bar]{https://www.youtube.com/watch?v=ceRYL271cao}
+  - ( ) [Tokyonight theme for tmux]{https://github.com/fabioluciano/tmux-tokyo-night}
+
+* Keybindings
+** Prefix key
+
+   Use `ctrl-s` instead of the default `ctrl-b`.
+
+   @code tmux
+   set -g prefix C-s
+   @end
+
+** Vim pane navigation
+
+   Allows switching between panes like in vim.
+
+   @code tmux
+   setw -g mode-keys vi
+   bind-key h select-pane -L
+   bind-key j select-pane -D
+   bind-key k select-pane -U
+   bind-key l select-pane -R
+   @end
+
+** Reload key
+
+  Allows dynamically reloading the tmux config.
+
+  @code tmux
+  unbind r
+  bind r source-file ~/.config/tmux/tmux.conf
+  @end
+
+* Misc
+** Vim related settings
+
+  `:checkhealth` in neovim wanted these settings.
+
+  @code tmux
+  set-option -g focus-events on
+  set-option -sg escape-time 10
+  @end
+
+** Use fish as default shell
+
+  Somehow wsl did use bash here.
+
+  @code tmux
+  set -g default-shell /usr/bin/fish
+  @end
+
+** Enable truecolor support
 
   For more info see [This Site]{https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6}
 
