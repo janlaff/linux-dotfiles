@@ -94,11 +94,11 @@ tangle: ./generated/nvim/init.lua
    `<leader>f` is used for telescope mappings.
 
    @code lua
-   vim.keymap.set('n', '<leader>ff', ":Telescope find_files<CR>")
-   vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>")
-   vim.keymap.set('n', '<leader>fb', ":Telescope buffers<CR>")
-   vim.keymap.set('n', '<leader>fh', ":Telescope help_tags<CR>")
-   vim.keymap.set('n', '<leader>fo', ":Telescope oldfiles<CR>")
+   vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
+   vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
+   vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
+   vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
+   vim.keymap.set("n", "<leader>fo", ":Telescope oldfiles<CR>")
    @end
 
 ** Neorg
@@ -166,6 +166,7 @@ tangle: ./generated/nvim/init.lua
     Neovim Lsp client interface.
     Enabled lsp servers:
     - rust-analyzer
+    - clangd
     - lua_ls
 
     @code lua
@@ -174,6 +175,7 @@ tangle: ./generated/nvim/init.lua
       config = function()
         local lspconfig = require("lspconfig")
         lspconfig.lua_ls.setup({})
+        lspconfig.clangd.setup({})
         lspconfig.rust_analyzer.setup({})
       end
     },
@@ -198,9 +200,9 @@ tangle: ./generated/nvim/init.lua
 
     @code lua
     {
-      'nvim-telescope/telescope.nvim',
-      tag = '0.1.1',
-      dependencies = { 'nvim-lua/plenary.nvim' },
+      "nvim-telescope/telescope.nvim",
+      tag = "0.1.1",
+      dependencies = { "nvim-lua/plenary.nvim" },
     },
     @end
 
@@ -217,16 +219,24 @@ tangle: ./generated/nvim/init.lua
     },
     @end
 
+
 *** Lualine
 
     A better statusline for neovim.
 
     @code lua
     {
-      'nvim-lualine/lualine.nvim',
+      "nvim-lualine/lualine.nvim",
       -- Also use tokyonight theme here :)
-      opts = { options = { theme = "tokyonight" } },
-      dependencies = { 'nvim-tree/nvim-web-devicons' }
+      opts = { 
+        options = { theme = "tokyonight" },
+        sections = { 
+          lualine_c = {
+            "lsp_progress"
+          }
+        }
+      },
+      dependencies = { "nvim-tree/nvim-web-devicons" }
     },
     @end
 

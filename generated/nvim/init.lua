@@ -12,11 +12,11 @@ vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("n", "<Tab>", ":bn<CR>")
 vim.keymap.set("n", "<C-Tab>", ":bp<CR>")
 vim.keymap.set("n", "<ESC>", "<ESC>:nohl<CR>")
-vim.keymap.set('n', '<leader>ff', ":Telescope find_files<CR>")
-vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<CR>")
-vim.keymap.set('n', '<leader>fb', ":Telescope buffers<CR>")
-vim.keymap.set('n', '<leader>fh', ":Telescope help_tags<CR>")
-vim.keymap.set('n', '<leader>fo', ":Telescope oldfiles<CR>")
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
+vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
+vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
+vim.keymap.set("n", "<leader>fo", ":Telescope oldfiles<CR>")
 vim.keymap.set("n", "<leader>nn", ":Neorg keybind norg core.dirman.new.note<CR>")
 vim.keymap.set("n", "<leader>nt", ":Neorg tangle current-file<CR>")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -46,6 +46,7 @@ local plugins = {
   config = function()
     local lspconfig = require("lspconfig")
     lspconfig.lua_ls.setup({})
+    lspconfig.clangd.setup({})
     lspconfig.rust_analyzer.setup({})
   end
 },
@@ -56,9 +57,9 @@ local plugins = {
   config = true,
 },
 {
-  'nvim-telescope/telescope.nvim',
-  tag = '0.1.1',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  "nvim-telescope/telescope.nvim",
+  tag = "0.1.1",
+  dependencies = { "nvim-lua/plenary.nvim" },
 },
 {   
   "folke/tokyonight.nvim",
@@ -67,10 +68,17 @@ local plugins = {
   end,
 },
 {
-  'nvim-lualine/lualine.nvim',
+  "nvim-lualine/lualine.nvim",
   -- Also use tokyonight theme here :)
-  opts = { options = { theme = "tokyonight" } },
-  dependencies = { 'nvim-tree/nvim-web-devicons' }
+  opts = { 
+    options = { theme = "tokyonight" },
+    sections = { 
+      lualine_c = {
+        "lsp_progress"
+      }
+    }
+  },
+  dependencies = { "nvim-tree/nvim-web-devicons" }
 },
 {
   "nvim-treesitter/nvim-treesitter",
