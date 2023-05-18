@@ -5,7 +5,6 @@ vim.opt.tabstop = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -25,6 +24,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  {
+    "folke/which-key.nvim",
+    config = true,
+  },
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
@@ -47,17 +50,16 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
-        sync_install = false,
-        auto_install = true,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        }
-      })
-    end
+    main = "nvim-treesitter.configs",
+    opts = {
+      ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+      sync_install = false,
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      }
+    }
   },
   {
     "nvim-neorg/neorg",
@@ -67,7 +69,11 @@ require("lazy").setup({
         ["core.defaults"] = {}, -- Loads default behaviour
         ["core.concealer"] = {}, -- Adds pretty icons to your documents
         ["core.tangle"] = {},
-        ["core.export"] = {},
+        ["core.keybinds"] = { 
+          config = {
+            default_keybinds = false,
+          }
+        },
         ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
@@ -77,8 +83,17 @@ require("lazy").setup({
         },
       },
     },
+    init = function() 
+      vim.cmd [[ autocmd FileType norg autocmd BufEnter <buffer> :Neorg inject-metadata ]]
+      vim.cmd [[ autocmd FileType norg autocmd BufWritePre <buffer> :Neorg update-metadata ]]
+    end,
     dependencies = { 
       "nvim-lua/plenary.nvim"
     },
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    opts = { options = { theme = "tokyonight" } },
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
   }
 })
