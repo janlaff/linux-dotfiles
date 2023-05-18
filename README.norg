@@ -11,9 +11,10 @@ version: 1.1.1
 * linux-dotfiles
 
   Collection of personal dotfiles on linux.
-  Currently featured:
-  - (x) neovim
-  - (x) fish
-  - (x) tmux
-  - (x) alacritty
+
+  *Currently featured:*
+  - (x) [neovim]{:nvim/init.lua:}
+  - (x) [fish]{:fish:}
+  - (x) [tmux]{:tmux:}
+  - (x) [alacritty]{:alacritty:}
 
