@@ -18,3 +18,11 @@ version: 1.1.1
   - (x) [tmux]{:tmux:}
   - (x) [alacritty]{:alacritty:}
 
+** Dependencies
+
+*** Treesitter
+
+    @code sh
+    $ sudo npm install -g tree-sitter-cli
+    @end
+
