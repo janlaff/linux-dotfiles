@@ -6,7 +6,6 @@ categories:
 created: 2023-05-18
 updated: 2023-05-18
 version: 1.1.1
-tangle: generated/installer.sh
 @end
 
 * linux-dotfiles
@@ -14,16 +13,7 @@ tangle: generated/installer.sh
   Collection of personal dotfiles on linux.
 
   *Currently featured:*
-  - (x) [neovim]{:nvim/init.lua:}
+  - (x) [neovim]{:neovim:}
   - (x) [fish]{:fish:}
   - (x) [tmux]{:tmux:}
   - (x) [alacritty]{:alacritty:}
-
-** Installation
-
-   @code sh
-   #!/bin/bash
-
-   sudo pacman -S nodejs npm neovim
-   sudo npm install -g tree-sitter-cli
-   @end
