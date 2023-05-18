@@ -76,3 +76,10 @@ tangle: ./generated/fish/config.fish
   set -g fish_pager_color_description $comment
   set -g fish_pager_color_selected_background --background=$selection
   @end
+* Default editor
+
+  Set neovim as default command line editor.
+
+  @code fish
+  set -gx EDITOR nvim
+  @end
