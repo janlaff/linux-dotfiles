@@ -77,6 +77,11 @@ require("lazy").setup({
           ["core.defaults"] = {}, -- Loads default behaviour
           ["core.concealer"] = {}, -- Adds pretty icons to your documents
           ["core.tangle"] = {},
+          ["core.esupports.metagen"] = {
+            config = {
+              type = "auto",
+            }
+          },
           ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
@@ -89,12 +94,12 @@ require("lazy").setup({
 
     vim.keymap.set("n", "<leader>nn", ":Neorg keybind norg core.dirman.new.note<CR>")
     vim.keymap.set("n", "<leader>nt", ":Neorg tangle current-file<CR>")
-    vim.keymap.set("n", "<leader>ni", ":Neorg inject-metadata<CR>")
+    -- vim.keymap.set("n", "<leader>ni", ":Neorg inject-metadata<CR>")
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = { "*.norg" },
-      command = ":Neorg update-metadata",
-    })
+    --vim.api.nvim_create_autocmd("BufWritePre", {
+    --  pattern = { "*.norg" },
+    --  command = ":Neorg update-metadata",
+    --})
   end,
   dependencies = { 
     "nvim-lua/plenary.nvim"

@@ -11,13 +11,14 @@ tangle: /mnt/c/Users/Administrator/AppData/Roaming/alacritty/alacritty.yml
 
 * Run WSL on startup
 
-  Run wsl on startup and cd into home.
+  This should work for both wsl and regular linux, and will open alacritty with fish.
+  (Invoking fish directly does not create the intended behaviour on windows).
 
   @code yaml
   shell:
-    program: wsl
+    program: bash
     args:
-      - --cd ~
+      - -c "fish"
   @end
 
 * Enable truecolor support
