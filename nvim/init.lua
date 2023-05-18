@@ -6,6 +6,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.cursorline = true
 
+vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set("i", "jk", "<ESC>")
@@ -24,6 +25,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = true,
+  },
   {
     "folke/which-key.nvim",
     config = true,
@@ -70,15 +77,10 @@ require("lazy").setup({
           ["core.defaults"] = {}, -- Loads default behaviour
           ["core.concealer"] = {}, -- Adds pretty icons to your documents
           ["core.tangle"] = {},
-          ["core.keybinds"] = { 
-            config = {
-              default_keybinds = false,
-            }
-          },
           ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
-              notes = "~/notes",
+              dotfiles = "~/linux-dotfiles"
             },
           },
         },
@@ -86,11 +88,9 @@ require("lazy").setup({
     })
 
     vim.keymap.set("n", "<leader>nn", ":Neorg keybind norg core.dirman.new.note<CR>")
+    vim.keymap.set("n", "<leader>nt", ":Neorg tangle current-file<CR>")
+    vim.keymap.set("n", "<leader>ni", ":Neorg inject-metadata<CR>")
 
-    vim.api.nvim_create_autocmd("BufEnter", {
-      pattern = { "*.norg" },
-      command = ":Neorg inject-metadata",
-    })
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = { "*.norg" },
       command = ":Neorg update-metadata",

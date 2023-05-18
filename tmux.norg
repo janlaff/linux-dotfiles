@@ -1,0 +1,19 @@
+@document.meta
+title: tmux config
+description: 
+authors: jan
+categories: 
+created: 2023-05-18
+updated: 2023-05-18
+version: 1.1.1
+tangle: ~/.config/tmux/tmux.conf
+@end
+
+* Enable truecolor support
+
+  For more info see [This Site]{https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6}
+
+  @code tmux
+  set -g default-terminal "tmux-256color"
+  set -ag terminal-overrides ",xterm-256color:RGB"
+  @end

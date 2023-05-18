@@ -1,0 +1,42 @@
+@document.meta
+title: alacritty wsl config
+description: 
+authors: jan
+categories: 
+created: 2023-05-18
+updated: 2023-05-18
+version: 1.1.1
+tangle: /mnt/c/Users/Administrator/AppData/Roaming/alacritty/alacritty.yml
+@end
+
+* Run WSL on startup
+
+  Run wsl on startup and cd into home.
+
+  @code yaml
+  shell:
+    program: wsl
+    args:
+      - --cd ~
+  @end
+
+* Enable truecolor support
+
+  Taken from {https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6}
+
+  @code yaml
+  env:
+    TERM: xterm-256color
+  @end
+
+* Font configuration
+
+  Use JetBrains Mono Nerd Font, taken from {https://www.nerdfonts.com/}
+
+  @code yaml
+  font:
+    size: 13.0
+    normal:
+      family: JetBrainsMono NFM
+      style: Medium
+  @end
